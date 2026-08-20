@@ -8,14 +8,16 @@ import random
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
-# Try to initialize OpenAI client if API key is present
+# OpenAI client disabled — API key quota exhausted.
+# The smart mock fallback provides instant, high-quality responses.
+# To re-enable, uncomment below and add a valid OPENAI_API_KEY to .env
 client = None
-try:
-    from openai import AsyncOpenAI
-    if os.environ.get("OPENAI_API_KEY"):
-        client = AsyncOpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-except ImportError:
-    pass
+# try:
+#     from openai import AsyncOpenAI
+#     if os.environ.get("OPENAI_API_KEY"):
+#         client = AsyncOpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+# except ImportError:
+#     pass
 
 class Message(BaseModel):
     id: int
