@@ -149,7 +149,7 @@ function App() {
       {/* ── Header ─────────────────────────────────────────── */}
       <header className="dashboard-header">
         <div>
-          <h1>⚡ SupplyChainAI</h1>
+          <h1>SupplyChainAI</h1>
           <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: 2 }}>
             Real-time supply chain disruption management
           </p>
@@ -159,14 +159,14 @@ function App() {
             {demoState === DEMO_STATES.IDLE ? '● Standby' : '● Live'}
           </span>
           <ActionButton
-            label="⚡ Simulate Disruption"
+            label="Simulate Disruption"
             variant="danger"
             onClick={handleShock}
             disabled={demoState !== DEMO_STATES.IDLE}
             pulse={demoState === DEMO_STATES.IDLE}
           />
           <ActionButton
-            label="🤖 Activate AI"
+            label="Activate AI"
             variant="safe"
             onClick={handleRunAI}
             disabled={demoState !== DEMO_STATES.SHOCK_FIRED && demoState !== DEMO_STATES.NAIVE_COLLAPSE}
@@ -178,7 +178,7 @@ function App() {
       {/* ── Scenario Banner ────────────────────────────────── */}
       {demoState !== DEMO_STATES.IDLE && (
         <div className="scenario-banner">
-          <span>🌊</span>
+          <span style={{ fontSize: '1.5rem', flexShrink: 0, marginTop: '-4px' }}>⚠</span>
           <div>
             <strong>Active Scenario: Typhoon Hits Kaohsiung Port</strong>
             <p>Port is offline. Suppliers are rerouting shipments. Drag the "Competitor Panic" slider to see how the market reacts.</p>
@@ -189,7 +189,7 @@ function App() {
       {/* ── AI Activated Banner ─────────────────────────────── */}
       {chatAction === 'ai_activated' && (
         <div className="ai-banner">
-          <span>🤖</span>
+          <span style={{ fontSize: '1.5rem', flexShrink: 0, marginTop: '-4px' }}>i</span>
           <div>
             <strong>AI Activated — Redistributing shipments</strong>
             <p>Watch the "With AI" panel update. The AI is spreading orders across multiple suppliers to prevent overload.</p>
@@ -240,7 +240,7 @@ function App() {
       <div className="dashboard-body">
         {/* ── Left Panel: Without AI ──────────────────────── */}
         <div className="split-panel">
-          <div className="panel-label naive">❌ Without AI — Everyone panics</div>
+          <div className="panel-label naive">Without AI — Everyone panics</div>
           <div className="panel-card">
             <div className="network-title">Supplier Status (Market Panic)</div>
             <SupplyChainFlow
@@ -253,7 +253,7 @@ function App() {
 
         {/* ── Right Panel: With AI ────────────────────────── */}
         <div className="split-panel">
-          <div className="panel-label ai">✅ With AI — Smart redistribution</div>
+          <div className="panel-label ai">With AI — Smart redistribution</div>
           <div className="panel-card">
             <div className="network-title">Supplier Status (AI-Optimized)</div>
             <SupplyChainFlow
@@ -268,7 +268,7 @@ function App() {
       {/* ── Controls Panel ─────────────────────────────────── */}
       <div className="panel-card controls-panel">
         <div className="controls-header">
-          <span>🎛️</span>
+          <span style={{ display: 'none' }}></span>
           <strong>Simulation Controls</strong>
           <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginLeft: 8 }}>
             Drag the sliders to simulate different market conditions

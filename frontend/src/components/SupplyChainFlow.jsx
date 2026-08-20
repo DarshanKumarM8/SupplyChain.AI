@@ -49,9 +49,9 @@ export default function SupplyChainFlow({ nodeStates = [], variant = 'naive', be
       }
 
       // Icon based on type
-      let icon = '📦';
-      if (isPort) icon = '🚢';
-      else if (id.includes('hub')) icon = '🏭';
+      let icon = <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>;
+      if (isPort) icon = <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 21h20M4 17h16l-1.5-6H5.5L4 17zM9 11V5h6v6"/></svg>;
+      else if (id.includes('hub')) icon = <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 21v-5h6v5"/></svg>;
 
       return { id, name, capacity, isBottleneck, status, statusLabel, icon };
     });

@@ -65,7 +65,7 @@ def get_smart_mock_response(text: str) -> dict:
     # Greetings
     if lower in ['hi', 'hello', 'hey', 'hey there', 'hii', 'hiii']:
         return {
-            "text": "Hey! 👋 I'm your supply chain assistant. I can help you understand what happens when a disruption hits — like the typhoon shutting down Kaohsiung Port right now. Try asking me things like 'What if I stop using Supplier A?' or 'Why not just use Supplier B?'"
+            "text": "Hey! I'm your supply chain assistant. I can help you understand what happens when a disruption hits — like the typhoon shutting down Kaohsiung Port right now. Try asking me things like 'What if I stop using Supplier A?' or 'Why not just use Supplier B?'"
         }
 
     # What can you do
@@ -78,21 +78,21 @@ def get_smart_mock_response(text: str) -> dict:
     if 'supplier b' in lower or "why not" in lower or "why didn't" in lower or 'why not just' in lower:
         return {
             "text": "Great question! Supplier B looks like the obvious backup — it's close and usually reliable. But here's the problem: when a port shuts down, *everyone* rushes to Supplier B. It's like a traffic jam — if all cars take the same detour, that road gets jammed too.\n\nOur AI spreads orders across multiple suppliers (B, C, and even air freight) so no single one gets overwhelmed. That's why the AI side keeps deliveries at 96% while the panic side drops to 77%.",
-            "action": {"label": "▶ Show this in the simulation", "type": "trigger_ai"}
+            "action": {"label": "Show this in the simulation", "type": "trigger_ai"}
         }
 
     # Supplier A
     if 'supplier a' in lower or "dont take supply" in lower or "don't take supply" in lower or "stop using" in lower:
         return {
             "text": "If you completely cut off Supplier A, your warehouse stock will run out in about 8 days. I'd recommend letting the AI redistribute that volume across your other suppliers — it'll find the best split automatically so you don't run dry.",
-            "action": {"label": "▶ Run redistribution", "type": "trigger_ai"}
+            "action": {"label": "Run redistribution", "type": "trigger_ai"}
         }
 
     # Port closed / 10 days
     if '10 days' in lower or 'port' in lower or 'closed' in lower or 'shut down' in lower:
         return {
             "text": "If the port stays closed for 10 more days, your current stock won't last. You'd need to shift about 20% of shipments to air freight to keep deliveries on track. It costs more, but it prevents missed orders.",
-            "action": {"label": "▶ Apply air freight shift", "type": "trigger_ai"}
+            "action": {"label": "Apply air freight shift", "type": "trigger_ai"}
         }
 
     # Cheapest
@@ -104,8 +104,8 @@ def get_smart_mock_response(text: str) -> dict:
     # Confirmations
     if lower in ['sure', 'yes', 'ok', 'okay', 'do it', 'go ahead', 'run it', 'yep', 'yeah']:
         return {
-            "text": "Running the simulation now! Watch the dashboard — you'll see how the AI spreads orders across suppliers to prevent any single one from getting overwhelmed. 🚀",
-            "action": {"label": "▶ Show simulation", "type": "trigger_ai"}
+            "text": "Running the simulation now! Watch the dashboard — you'll see how the AI spreads orders across suppliers to prevent any single one from getting overwhelmed.",
+            "action": {"label": "Show simulation", "type": "trigger_ai"}
         }
 
     # 80% / crowd

@@ -7,7 +7,7 @@ export default function AskSupplyChainAI({ onTriggerSimulation, contextState }) 
     {
       id: 1,
       sender: 'ai',
-      text: 'Hey! 👋 I\'m your supply chain assistant. Ask me anything about the disruption — like "Why not just use Supplier B?" or "What if the port stays closed?"'
+      text: 'Hey! I\'m your supply chain assistant. Ask me anything about the disruption — like "Why not just use Supplier B?" or "What if the port stays closed?"'
     }
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -93,7 +93,7 @@ export default function AskSupplyChainAI({ onTriggerSimulation, contextState }) 
       setMessages(prev => [...prev, {
         id: Date.now(),
         sender: 'ai',
-        text: 'Done! 🚀 Check the dashboard above — the AI has redistributed shipments across suppliers. Compare the "Without AI" and "With AI" panels to see the difference.'
+        text: 'Done! Check the dashboard above — the AI has redistributed shipments across suppliers. Compare the "Without AI" and "With AI" panels to see the difference.'
       }]);
     }
   };
@@ -102,7 +102,7 @@ export default function AskSupplyChainAI({ onTriggerSimulation, contextState }) 
     return (
       <div className="chat-widget-container">
         <button className="chat-toggle-btn" onClick={() => setIsOpen(true)}>
-          <span style={{ fontSize: '1.2rem' }}>💬</span> Ask SupplyChainAI
+          <span style={{ display: 'none' }}></span> Ask SupplyChainAI
         </button>
       </div>
     );
@@ -113,7 +113,7 @@ export default function AskSupplyChainAI({ onTriggerSimulation, contextState }) 
       <div className="chat-window">
         <div className="chat-header">
           <div className="chat-title">
-            <span>💬</span> Ask SupplyChainAI
+            <span style={{ display: 'none' }}></span> Ask SupplyChainAI
           </div>
           <button className="chat-close" onClick={() => setIsOpen(false)}>×</button>
         </div>
