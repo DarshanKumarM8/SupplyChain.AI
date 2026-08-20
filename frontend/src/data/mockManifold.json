@@ -1,0 +1,23 @@
+{
+  "params": {
+    "beta": 0.6,
+    "adoption_pct": 0.40,
+    "shock_intensity": 0.85
+  },
+  "frame_id": 142,
+  "stampede_index_trajectory": [12, 14, 87, 92, 88, 85],
+  "ai_index_trajectory": [12, 14, 19, 21, 20, 19],
+  "node_states": [
+    { "id": "node_01", "capacity_pct": 0.45, "is_bottleneck": true, "lane_price_delta": 0.34 },
+    { "id": "node_02", "capacity_pct": 0.92, "is_bottleneck": false, "lane_price_delta": 0.02 },
+    { "id": "node_03", "capacity_pct": 0.78, "is_bottleneck": false, "lane_price_delta": 0.15 },
+    { "id": "node_04", "capacity_pct": 0.33, "is_bottleneck": true, "lane_price_delta": 0.42 }
+  ],
+  "density_field_snapshot": [
+    [0.1, 0.2, 0.15],
+    [0.4, 0.8, 0.6],
+    [0.3, 0.5, 0.4]
+  ],
+  "meta_herd_detected": false,
+  "entropy_budget_active": false
+}

@@ -35,6 +35,9 @@
 - [x] Stub all component files
 - [x] Create mock manifold data
 - [x] Create hooks and services
+- [x] Implement "Ask SupplyChainAI" floating terminal
+
+### AI Engine (Person 1)
 
 ### DevOps
 - [x] Create deployment scripts

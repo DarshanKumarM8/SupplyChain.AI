@@ -8,7 +8,7 @@ Main application with CORS, routers, WebSocket, and startup events.
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routers import health, simulation, manifold, market
+from app.routers import health, simulation, manifold, market, chat
 
 app = FastAPI(
     title="SupplyChainAI API",
@@ -33,6 +33,7 @@ app.include_router(health.router, tags=["Health"])
 app.include_router(simulation.router, prefix="/api", tags=["Simulation"])
 app.include_router(manifold.router, prefix="/api", tags=["Manifold"])
 app.include_router(market.router, prefix="/api", tags=["Market"])
+app.include_router(chat.router, prefix="/api/chat", tags=["Chat"])
 
 # ── WebSocket endpoint ───────────────────────────────────────────
 from app.websockets.stream import websocket_simulation

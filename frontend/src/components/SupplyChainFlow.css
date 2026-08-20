@@ -1,0 +1,160 @@
+.supply-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 12px;
+}
+
+.flow-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+/* ── Supplier Card ────────────────────────────── */
+.supplier-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.supplier-card:hover {
+  border-color: var(--border-focus);
+}
+
+.supplier-card.critical {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.supplier-card.warning {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.04);
+}
+
+.supplier-card.offline {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.04);
+  opacity: 0.6;
+}
+
+.supplier-card.limited {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+/* ── Icon ──────────────────────────────────────── */
+.supplier-icon {
+  font-size: 1.4rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+/* ── Info ──────────────────────────────────────── */
+.supplier-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.supplier-name {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.supplier-status {
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 2px;
+  color: var(--accent-green);
+}
+
+.supplier-status.critical {
+  color: #ef4444;
+}
+
+.supplier-status.warning {
+  color: #f59e0b;
+}
+
+.supplier-status.offline {
+  color: #ef4444;
+}
+
+.supplier-status.limited {
+  color: #60a5fa;
+}
+
+/* ── Capacity Bar ─────────────────────────────── */
+.supplier-capacity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.capacity-bar-bg {
+  width: 60px;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.capacity-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--accent-green);
+  transition: width 0.5s ease;
+}
+
+.capacity-bar-fill.critical {
+  background: #ef4444;
+}
+
+.capacity-bar-fill.warning {
+  background: #f59e0b;
+}
+
+.capacity-bar-fill.offline {
+  background: #ef4444;
+}
+
+.capacity-bar-fill.limited {
+  background: #60a5fa;
+}
+
+.capacity-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  width: 30px;
+  text-align: right;
+}
+
+/* ── Connector Arrow ──────────────────────────── */
+.flow-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  color: var(--text-muted);
+  opacity: 0.4;
+}
