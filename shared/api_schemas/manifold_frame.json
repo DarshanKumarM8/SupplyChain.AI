@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ManifoldFrame",
+  "description": "Precomputed simulation state for a specific parameter combination (beta, adoption, shock)",
+  "type": "object",
+  "required": ["params", "frame_id", "stampede_index_trajectory", "ai_index_trajectory", "node_states", "density_field_snapshot"],
+  "properties": {
+    "params": {
+      "type": "object",
+      "required": ["beta", "adoption_pct", "shock_intensity"],
+      "properties": {
+        "beta": { "type": "number", "minimum": 0, "maximum": 1 },
+        "adoption_pct": { "type": "number", "minimum": 0, "maximum": 1 },
+        "shock_intensity": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "frame_id": { "type": "integer", "minimum": 0 },
+    "stampede_index_trajectory": {
+      "type": "array",
+      "items": { "type": "number", "minimum": 0, "maximum": 100 }
+    },
+    "ai_index_trajectory": {
+      "type": "array",
+      "items": { "type": "number", "minimum": 0, "maximum": 100 }
+    },
+    "node_states": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "capacity_pct", "is_bottleneck", "lane_price_delta"],
+        "properties": {
+          "id": { "type": "string" },
+          "capacity_pct": { "type": "number", "minimum": 0, "maximum": 1 },
+          "is_bottleneck": { "type": "boolean" },
+          "lane_price_delta": { "type": "number" }
+        }
+      }
+    },
+    "density_field_snapshot": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": { "type": "number" }
+      }
+    },
+    "meta_herd_detected": { "type": "boolean", "default": false },
+    "entropy_budget_active": { "type": "boolean", "default": false }
+  }
+}

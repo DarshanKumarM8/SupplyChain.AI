@@ -1,0 +1,9 @@
+[project]
+name = "supplychainai-engine"
+version = "0.1.0"
+description = "SupplyChainAI — AI/ML Engine: Game-theoretic agents, Fokker-Planck solver, and manifold precompute"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

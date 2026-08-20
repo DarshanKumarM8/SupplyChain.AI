@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DisruptionEvent",
+  "description": "Sentinel agent output: corroborated disruption event with self-influence filtering",
+  "type": "object",
+  "required": ["event_id", "timestamp", "event_type", "source", "confidence", "affected_nodes"],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "pattern": "^evt_[0-9]{3,}$",
+      "example": "evt_001"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": ["port_closure", "factory_shutdown", "lane_congestion", "weather_disruption", "geopolitical_sanction"]
+    },
+    "source": {
+      "type": "string",
+      "enum": ["GDELT_corroborated", "manual_input", "sensor_feed"]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "corroboration_latency_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "affected_nodes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "self_influence_filtered": {
+      "type": "boolean",
+      "default": false
+    },
+    "raw_signal_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "filtered_signal_count": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

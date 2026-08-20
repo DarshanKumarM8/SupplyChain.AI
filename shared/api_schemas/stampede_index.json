@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SupplyChainAIIndexFrame",
+  "description": "WebSocket frame: live SupplyChainAI Index with naive vs AI comparison",
+  "type": "object",
+  "required": ["timestamp", "tick", "stampede_index", "components", "naive_index", "naive_components", "market_impact", "kpi", "naive_kpi"],
+  "properties": {
+    "timestamp": { "type": "string", "format": "date-time" },
+    "tick": { "type": "integer", "minimum": 0 },
+    "stampede_index": { "type": "number", "minimum": 0, "maximum": 100 },
+    "components": {
+      "type": "object",
+      "required": ["spearman_rho", "depletion_velocity", "rate_volatility"],
+      "properties": {
+        "spearman_rho": { "type": "number", "minimum": -1, "maximum": 1 },
+        "depletion_velocity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "rate_volatility": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "naive_index": { "type": "number", "minimum": 0, "maximum": 100 },
+    "naive_components": {
+      "type": "object",
+      "required": ["spearman_rho", "depletion_velocity", "rate_volatility"],
+      "properties": {
+        "spearman_rho": { "type": "number", "minimum": -1, "maximum": 1 },
+        "depletion_velocity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "rate_volatility": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "market_impact": {
+      "type": "object",
+      "required": ["naive_price_delta_pct", "option_price_delta_pct"],
+      "properties": {
+        "naive_price_delta_pct": { "type": "number" },
+        "option_price_delta_pct": { "type": "number" }
+      }
+    },
+    "kpi": {
+      "type": "object",
+      "required": ["cost_usd", "sla_miss_pct", "carbon_delta_pct"],
+      "properties": {
+        "cost_usd": { "type": "number", "minimum": 0 },
+        "sla_miss_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "carbon_delta_pct": { "type": "number" }
+      }
+    },
+    "naive_kpi": {
+      "type": "object",
+      "required": ["cost_usd", "sla_miss_pct", "carbon_delta_pct"],
+      "properties": {
+        "cost_usd": { "type": "number", "minimum": 0 },
+        "sla_miss_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "carbon_delta_pct": { "type": "number" }
+      }
+    }
+  }
+}

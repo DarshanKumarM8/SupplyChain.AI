@@ -1,0 +1,50 @@
+# SupplyChainAI
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Node
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Data artifacts (large files)
+ai_engine/data/manifold/*.npy
+ai_engine/data/manifold/*.npz
+
+# Docker
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test / Coverage
+htmlcov/
+.coverage
+.pytest_cache/

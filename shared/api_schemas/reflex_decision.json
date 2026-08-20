@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ReflexDecision",
+  "description": "Reflex agent output: temporal de-phasing strategy, entropy budget, and cost summary",
+  "type": "object",
+  "required": ["event_id", "strategy", "stampede_index_before", "stampede_index_after", "density_field", "dephasing_schedule", "entropy_budget", "cost_summary"],
+  "properties": {
+    "event_id": { "type": "string" },
+    "strategy": {
+      "type": "string",
+      "enum": ["temporal_dephasing", "spatial_dephasing", "hybrid", "entropy_only"]
+    },
+    "stampede_index_before": { "type": "number", "minimum": 0, "maximum": 100 },
+    "stampede_index_after": { "type": "number", "minimum": 0, "maximum": 100 },
+    "density_field": {
+      "type": "object",
+      "required": ["lanes", "weeks", "grid"],
+      "properties": {
+        "lanes": { "type": "integer", "minimum": 1 },
+        "weeks": { "type": "integer", "minimum": 1 },
+        "grid": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "number" }
+          }
+        }
+      }
+    },
+    "dephasing_schedule": {
+      "type": "object",
+      "patternProperties": {
+        "^W[0-9]+$": {
+          "type": "object",
+          "required": ["lane_ids", "allocation_pct"],
+          "properties": {
+            "lane_ids": { "type": "array", "items": { "type": "string" } },
+            "allocation_pct": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        }
+      }
+    },
+    "entropy_budget": {
+      "type": "object",
+      "required": ["total_budget", "spent", "randomized_routes"],
+      "properties": {
+        "total_budget": { "type": "number", "minimum": 0 },
+        "spent": { "type": "number", "minimum": 0 },
+        "randomized_routes": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "options_exercised": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["lane_id", "capacity_units", "strike_price", "spot_price"],
+        "properties": {
+          "lane_id": { "type": "string" },
+          "capacity_units": { "type": "integer", "minimum": 0 },
+          "strike_price": { "type": "number", "minimum": 0 },
+          "spot_price": { "type": "number", "minimum": 0 }
+        }
+      }
+    },
+    "cost_summary": {
+      "type": "object",
+      "required": ["total_cost_usd", "sla_miss_pct", "carbon_delta_pct"],
+      "properties": {
+        "total_cost_usd": { "type": "number", "minimum": 0 },
+        "sla_miss_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "carbon_delta_pct": { "type": "number" }
+      }
+    }
+  }
+}

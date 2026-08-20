@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SupplyNetwork",
+  "description": "120-node synthetic supply chain network with contingent substitution edges",
+  "type": "object",
+  "required": ["network_id", "nodes", "edges", "metadata"],
+  "properties": {
+    "network_id": { "type": "string" },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "node_count": { "type": "integer" },
+        "edge_count": { "type": "integer" },
+        "contingent_edge_count": { "type": "integer" },
+        "scenario": { "type": "string" },
+        "generated_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "capacity_max", "region"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["port", "factory", "distribution_hub", "raw_material_source", "end_market"]
+          },
+          "region": { "type": "string" },
+          "country": { "type": "string" },
+          "lat": { "type": "number" },
+          "lon": { "type": "number" },
+          "capacity_max": { "type": "integer", "minimum": 0 },
+          "capacity_current": { "type": "integer", "minimum": 0 },
+          "is_critical": { "type": "boolean", "default": false },
+          "buffer_vector": {
+            "type": "array",
+            "items": { "type": "number" },
+            "description": "SKU-level inventory buffer for buffer-diversity scoring"
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "source", "target", "lane_type", "cost_per_unit", "transit_days"],
+        "properties": {
+          "id": { "type": "string" },
+          "source": { "type": "string" },
+          "target": { "type": "string" },
+          "lane_type": {
+            "type": "string",
+            "enum": ["ocean_freight", "air_freight", "rail", "truck", "intermodal"]
+          },
+          "cost_per_unit": { "type": "number", "minimum": 0 },
+          "transit_days": { "type": "number", "minimum": 0 },
+          "capacity": { "type": "integer", "minimum": 0 },
+          "is_contingent": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, edge only activates under specific disruption conditions"
+          },
+          "activation_condition": {
+            "type": ["string", "null"],
+            "description": "Node ID whose failure activates this contingent edge",
+            "default": null
+          },
+          "base_rate": { "type": "number", "minimum": 0 },
+          "temperature_controlled": { "type": "boolean", "default": false },
+          "avg_temperature_c": { "type": ["number", "null"], "default": null }
+        }
+      }
+    }
+  }
+}

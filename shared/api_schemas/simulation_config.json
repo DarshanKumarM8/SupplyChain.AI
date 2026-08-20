@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SimulationConfig",
+  "description": "Frontend-to-backend simulation configuration (scenario + interactive parameters)",
+  "type": "object",
+  "required": ["scenario_id", "beta", "market_adoption_pct", "shock_intensity", "mode"],
+  "properties": {
+    "scenario_id": {
+      "type": "string",
+      "enum": ["kaohsiung_typhoon", "suez_blockage", "semiconductor_shortage", "custom"]
+    },
+    "beta": {
+      "type": "number",
+      "minimum": 0.1,
+      "maximum": 0.9,
+      "description": "Competitor panic parameter"
+    },
+    "market_adoption_pct": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 0.8,
+      "description": "Fraction of market using SupplyChainAI (for meta-herd detection)"
+    },
+    "shock_intensity": {
+      "type": "number",
+      "minimum": 0.1,
+      "maximum": 1.0,
+      "description": "Severity of the disruption (1.0 = full port closure)"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["ai_vs_naive", "ai_only", "naive_only"],
+      "default": "ai_vs_naive"
+    },
+    "manual_override": {
+      "type": ["object", "null"],
+      "properties": {
+        "lane_id": { "type": "string" },
+        "action": { "type": "string", "enum": ["grab", "release", "reroute"] }
+      },
+      "default": null
+    }
+  }
+}

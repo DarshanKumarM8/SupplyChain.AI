@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MarketImpact",
+  "description": "Kyle/Grossman-Stiglitz price impact response for a given booking vs depth ratio",
+  "type": "object",
+  "required": ["q_booked", "d_available", "price_base", "price_impacted", "price_delta_pct", "lambda", "gamma"],
+  "properties": {
+    "q_booked": { "type": "number", "minimum": 0 },
+    "d_available": { "type": "number", "minimum": 0 },
+    "price_base": { "type": "number", "minimum": 0 },
+    "price_impacted": { "type": "number", "minimum": 0 },
+    "price_delta_pct": { "type": "number" },
+    "lambda": { "type": "number" },
+    "gamma": { "type": "number" },
+    "execution_mode": {
+      "type": "string",
+      "enum": ["spot_booking", "option_exercise"]
+    }
+  }
+}

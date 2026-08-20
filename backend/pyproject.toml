@@ -1,0 +1,10 @@
+[project]
+name = "supplychainai-backend"
+version = "0.1.0"
+description = "SupplyChainAI — Backend: FastAPI, Financial Engines, WebSocket Streaming"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"

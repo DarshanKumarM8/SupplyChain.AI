@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PerishableRouting",
+  "description": "Rot-aware routing response with decay VaR and Scope 3 carbon penalty",
+  "type": "object",
+  "required": ["route_id", "origin", "destination", "freight_cost", "decay_var", "co2e_transit", "co2e_replacement_risk", "total_objective", "spoilage_probability"],
+  "properties": {
+    "route_id": { "type": "string" },
+    "origin": { "type": "string" },
+    "destination": { "type": "string" },
+    "freight_cost": { "type": "number", "minimum": 0 },
+    "transit_hours": { "type": "number", "minimum": 0 },
+    "temperature_profile": {
+      "type": "array",
+      "items": { "type": "number" }
+    },
+    "decay_var": {
+      "type": "number",
+      "minimum": 0,
+      "description": "alpha-quantile Value-at-Risk of kinetic decay via Arrhenius integration"
+    },
+    "spoilage_probability": { "type": "number", "minimum": 0, "maximum": 1 },
+    "co2e_transit": { "type": "number", "minimum": 0 },
+    "co2e_replacement_risk": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Expected Scope 3 emissions if spoilage triggers re-production"
+    },
+    "total_objective": {
+      "type": "number",
+      "description": "Combined objective: freight_cost + decay_var + E[co2e_transit + I(spoil) * co2e_reproduce]"
+    }
+  }
+}
