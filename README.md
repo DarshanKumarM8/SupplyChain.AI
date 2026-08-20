@@ -1,34 +1,37 @@
-# SupplyChain.AI
+# SupplyChain.AI: Multi-Agent Optimization for Disruption Management
 
-SupplyChain.AI is a real-time, interactive simulation dashboard and AI decision-agent designed to help procurement managers navigate global supply chain disruptions. 
+SupplyChain.AI is an advanced, real-time analytics and decision-support platform designed to mitigate cascading failures in global supply chain networks. 
 
-When a crisis hits (e.g., a typhoon shutting down a major port), most human buyers panic and rush to the same obvious backup supplier, creating a "stampede" effect that overloads secondary suppliers and crashes the service level. **SupplyChain.AI** intelligently redistributes orders across the network to prevent this cascading failure.
+At the core of the platform is an equilibrium simulation engine that models "Meta-Herd" dynamics. In traditional disruption scenarios (e.g., a localized black swan event shutting down a primary logistics hub), human actors exhibit bounded rationality—flocking to the most obvious secondary capacity. This stampede effect inadvertently overloads secondary nodes, leading to severe Service Level Agreement (SLA) degradation, exponential cost inflation, and network collapse. 
 
-## 🚀 Key Features
+SupplyChain.AI utilizes a distributed, least-regret allocation model to calculate optimized routing topologies in real-time, effectively smoothing demand shocks across the network while providing explainable AI (XAI) insights via a conversational interface.
 
-- **Real-Time Simulation Engine:** Watch how a "Naive Market" crashes under pressure compared to an "AI-Optimized" market that smoothly redistributes volume.
-- **Interactive Panic Sliders:** Adjust market panic (`Beta`) and AI adoption rates live to see how they impact supplier capacity, SLA misses, and carbon footprints.
-- **SupplyChainAI Chat Assistant:** A built-in, context-aware AI assistant that can explain the simulation in plain English, justify why certain suppliers are overloaded, and trigger UI updates directly from the chat.
-- **Clean, Professional UI:** A responsive, dark-mode React dashboard built for executive-level presentations and decision-making.
+## System Architecture & Capabilities
 
-## 🛠️ Technology Stack
+- **Stochastic Shock Simulation:** Models the divergence between a "Naive Market" equilibrium (where node capacity constraints are breached due to herd behavior) and an "AI-Optimized" topology.
+- **Parametric Scenario Modeling:** Dynamic input matrices allow users to manipulate `Beta` (Competitor Panic/Herd Velocity) and `Alpha` (AI Adoption Rate) to instantly compute the impact on multi-dimensional KPIs, including marginal cost variance and carbon footprint delta.
+- **LLM-Driven Diagnostic Agent:** An integrated context-aware Natural Language Processing (NLP) agent that parses complex tensor outputs into executive summaries, providing transparent rationale for optimal constraint relaxation and dynamic capacity allocation.
+- **High-Fidelity Telemetry Dashboard:** A low-latency, modular React frontend utilizing custom SVG vector mappings to visualize node saturation and flow bottlenecks in real-time.
 
-- **Frontend:** React, Vite, standard CSS (No external UI frameworks — completely custom, responsive styling).
-- **Backend:** Python, FastAPI, Uvicorn.
-- **AI Integration:** OpenAI API with a highly robust mock-fallback system for API rate-limit resilience.
-- **Deployment:** Configured for Vercel (Frontend) and Render (Backend).
+## Technology Stack
 
-## 🧑‍💻 Team & Contributions
+- **Client Layer:** React 18, Vite, Custom CSS Architecture (Zero-dependency layout design for high-performance rendering).
+- **Application Layer:** Python 3.11, FastAPI, Uvicorn, ASGI asynchronous processing.
+- **Intelligence Layer:** OpenAI GPT-4o-mini integration with a resilient, deterministic fallback heuristic system for sustained operations during rate limits.
+- **Deployment Infrastructure:** Vercel (Client Distribution) and Render (API Microservices).
 
-This project was built collaboratively:
+## Core Contributors
 
-- **Jason:** UI/UX Architecture, Frontend Dashboard logic, State Management, and Chat Integration.
-- **Darshan:** Project Management, GitHub Repository Maintenance, and Core Backend API setup.
-- **Mithun:** Data Pipeline Architecture, Fallback Mock Intelligence Design, and Backend-Frontend Integration Testing.
+This system was architected and implemented with equal, synergistic contributions from our core engineering team:
 
-## 🏃‍♂️ How to Run Locally
+- **Jason:** *Lead Client Architect & State Management.* Engineered the reactive telemetry dashboard, real-time parametric UI components, and the seamless integration of the asynchronous NLP chat agent into the presentation layer.
+- **Darshan:** *Infrastructure & Core API Engineering.* Architected the FastAPI backend, managed the asynchronous application layer, orchestrated the Render deployment pipeline, and maintained repository CI/CD infrastructure.
+- **Mithun:** *Simulation Logic & Data Pipeline.* Designed the deterministic fallback models, integrated the core API payload structures, and managed the data harmonization between the simulation engine and the client interface.
+- **Kalen:** *Algorithmic Optimization & LLM Integration.* Engineered the conversational XAI logic, defined the prompt orchestration schemas, and developed the edge-case error handling and contextual formatting for the AI module.
 
-### 1. Start the Backend
+## Deployment & Execution
+
+### Environment Instantiation (Backend)
 ```bash
 cd backend
 python3 -m venv venv
@@ -36,18 +39,16 @@ source venv/bin/activate
 pip install -r requirements.txt
 python3 run_chat_server.py
 ```
-*(The backend will run on `http://localhost:8000`)*
+*API instantiates on `http://localhost:8000`*
 
-### 2. Start the Frontend
+### Environment Instantiation (Frontend)
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-*(The frontend will run on `http://localhost:5173`)*
+*Client instantiates on `http://localhost:5173`*
 
-## 🌍 Deployment
-
-- **Backend:** Automatically deployed via Render. 
-- **Frontend:** Deployed via Vercel. 
-  - *Note:* The production frontend automatically connects to the live backend using the `.env.production` configuration (`VITE_API_URL`).
+### Production Topography
+- **Backend API:** Hosted via Render.
+- **Frontend Client:** Deployed via Vercel Edge Network, dynamically bound to the production API via environment variable injection (`VITE_API_URL`).
