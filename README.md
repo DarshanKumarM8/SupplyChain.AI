@@ -24,10 +24,10 @@ SupplyChain.AI utilizes a distributed, least-regret allocation model to calculat
 
 This system was architected and implemented with equal, synergistic contributions from our core engineering team:
 
-- **Jason:** *Lead Client Architect & State Management.* Engineered the reactive telemetry dashboard, real-time parametric UI components, and the seamless integration of the asynchronous NLP chat agent into the presentation layer.
-- **Darshan:** *Infrastructure & Core API Engineering.* Architected the FastAPI backend, managed the asynchronous application layer, orchestrated the Render deployment pipeline, and maintained repository CI/CD infrastructure.
-- **Mithun:** *Simulation Logic & Data Pipeline.* Designed the deterministic fallback models, integrated the core API payload structures, and managed the data harmonization between the simulation engine and the client interface.
-- **Kalen:** *Algorithmic Optimization & LLM Integration.* Engineered the conversational XAI logic, defined the prompt orchestration schemas, and developed the edge-case error handling and contextual formatting for the AI module.
+- **Irudaya Jason J:** *Lead Client Architect & State Management.* Engineered the reactive telemetry dashboard, real-time parametric UI components, and the seamless integration of the asynchronous NLP chat agent into the presentation layer.
+- **M Darshan Kumar:** *Infrastructure & Core API Engineering.* Architected the FastAPI backend, managed the asynchronous application layer, orchestrated the Render deployment pipeline, and maintained repository CI/CD infrastructure.
+- **Mithun A:** *Simulation Logic & Data Pipeline.* Designed the deterministic fallback models, integrated the core API payload structures, and managed the data harmonization between the simulation engine and the client interface.
+- **Mohammed Nahyan Khan:** *Algorithmic Optimization & LLM Integration.* Engineered the conversational XAI logic, defined the prompt orchestration schemas, and developed the edge-case error handling and contextual formatting for the AI module.
 
 ## Deployment & Execution
 
