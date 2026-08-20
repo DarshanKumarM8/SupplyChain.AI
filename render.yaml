@@ -1,0 +1,36 @@
+services:
+  # 1. Managed Redis Instance
+  - type: redis
+    name: stampede-redis
+    plan: free
+    maxmemoryPolicy: allkeys-lru
+
+  # 2. Web Service (FastAPI API Server)
+  - type: web
+    name: stampede-api
+    env: docker
+    plan: free
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
+    healthCheckPath: /health
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: stampede-redis
+          property: connectionString
+
+  # 3. Background Worker (Celery Task Runner)
+  - type: worker
+    name: stampede-celery
+    env: docker
+    plan: free
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
+    dockerCommand: celery -A app.tasks.celery_worker worker --loglevel=info
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: stampede-redis
+          property: connectionString

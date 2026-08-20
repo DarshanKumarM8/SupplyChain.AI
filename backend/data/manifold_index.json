@@ -1,0 +1,927 @@
+{
+  "total_frames": 100,
+  "parameter_grid": {
+    "beta": [
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      0.9
+    ],
+    "adoption_pct": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ],
+    "shock_intensity": [
+      0.3,
+      0.5,
+      0.7,
+      1.0
+    ]
+  },
+  "frames": [
+    {
+      "frame_id": 0,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0000.json"
+    },
+    {
+      "frame_id": 1,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0001.json"
+    },
+    {
+      "frame_id": 2,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0002.json"
+    },
+    {
+      "frame_id": 3,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.0,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0003.json"
+    },
+    {
+      "frame_id": 4,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0004.json"
+    },
+    {
+      "frame_id": 5,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0005.json"
+    },
+    {
+      "frame_id": 6,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0006.json"
+    },
+    {
+      "frame_id": 7,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.2,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0007.json"
+    },
+    {
+      "frame_id": 8,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0008.json"
+    },
+    {
+      "frame_id": 9,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0009.json"
+    },
+    {
+      "frame_id": 10,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0010.json"
+    },
+    {
+      "frame_id": 11,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.4,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0011.json"
+    },
+    {
+      "frame_id": 12,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0012.json"
+    },
+    {
+      "frame_id": 13,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0013.json"
+    },
+    {
+      "frame_id": 14,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0014.json"
+    },
+    {
+      "frame_id": 15,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.6,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0015.json"
+    },
+    {
+      "frame_id": 16,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0016.json"
+    },
+    {
+      "frame_id": 17,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0017.json"
+    },
+    {
+      "frame_id": 18,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0018.json"
+    },
+    {
+      "frame_id": 19,
+      "params": {
+        "beta": 0.1,
+        "adoption_pct": 0.8,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0019.json"
+    },
+    {
+      "frame_id": 20,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0020.json"
+    },
+    {
+      "frame_id": 21,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0021.json"
+    },
+    {
+      "frame_id": 22,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0022.json"
+    },
+    {
+      "frame_id": 23,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.0,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0023.json"
+    },
+    {
+      "frame_id": 24,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0024.json"
+    },
+    {
+      "frame_id": 25,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0025.json"
+    },
+    {
+      "frame_id": 26,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0026.json"
+    },
+    {
+      "frame_id": 27,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.2,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0027.json"
+    },
+    {
+      "frame_id": 28,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0028.json"
+    },
+    {
+      "frame_id": 29,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0029.json"
+    },
+    {
+      "frame_id": 30,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0030.json"
+    },
+    {
+      "frame_id": 31,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.4,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0031.json"
+    },
+    {
+      "frame_id": 32,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0032.json"
+    },
+    {
+      "frame_id": 33,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0033.json"
+    },
+    {
+      "frame_id": 34,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0034.json"
+    },
+    {
+      "frame_id": 35,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.6,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0035.json"
+    },
+    {
+      "frame_id": 36,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0036.json"
+    },
+    {
+      "frame_id": 37,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0037.json"
+    },
+    {
+      "frame_id": 38,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0038.json"
+    },
+    {
+      "frame_id": 39,
+      "params": {
+        "beta": 0.3,
+        "adoption_pct": 0.8,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0039.json"
+    },
+    {
+      "frame_id": 40,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0040.json"
+    },
+    {
+      "frame_id": 41,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0041.json"
+    },
+    {
+      "frame_id": 42,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0042.json"
+    },
+    {
+      "frame_id": 43,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.0,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0043.json"
+    },
+    {
+      "frame_id": 44,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0044.json"
+    },
+    {
+      "frame_id": 45,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0045.json"
+    },
+    {
+      "frame_id": 46,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0046.json"
+    },
+    {
+      "frame_id": 47,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.2,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0047.json"
+    },
+    {
+      "frame_id": 48,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0048.json"
+    },
+    {
+      "frame_id": 49,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0049.json"
+    },
+    {
+      "frame_id": 50,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0050.json"
+    },
+    {
+      "frame_id": 51,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.4,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0051.json"
+    },
+    {
+      "frame_id": 52,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0052.json"
+    },
+    {
+      "frame_id": 53,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0053.json"
+    },
+    {
+      "frame_id": 54,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0054.json"
+    },
+    {
+      "frame_id": 55,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.6,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0055.json"
+    },
+    {
+      "frame_id": 56,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0056.json"
+    },
+    {
+      "frame_id": 57,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0057.json"
+    },
+    {
+      "frame_id": 58,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0058.json"
+    },
+    {
+      "frame_id": 59,
+      "params": {
+        "beta": 0.5,
+        "adoption_pct": 0.8,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0059.json"
+    },
+    {
+      "frame_id": 60,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0060.json"
+    },
+    {
+      "frame_id": 61,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0061.json"
+    },
+    {
+      "frame_id": 62,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0062.json"
+    },
+    {
+      "frame_id": 63,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.0,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0063.json"
+    },
+    {
+      "frame_id": 64,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0064.json"
+    },
+    {
+      "frame_id": 65,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0065.json"
+    },
+    {
+      "frame_id": 66,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0066.json"
+    },
+    {
+      "frame_id": 67,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.2,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0067.json"
+    },
+    {
+      "frame_id": 68,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0068.json"
+    },
+    {
+      "frame_id": 69,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0069.json"
+    },
+    {
+      "frame_id": 70,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0070.json"
+    },
+    {
+      "frame_id": 71,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.4,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0071.json"
+    },
+    {
+      "frame_id": 72,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0072.json"
+    },
+    {
+      "frame_id": 73,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0073.json"
+    },
+    {
+      "frame_id": 74,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0074.json"
+    },
+    {
+      "frame_id": 75,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.6,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0075.json"
+    },
+    {
+      "frame_id": 76,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0076.json"
+    },
+    {
+      "frame_id": 77,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0077.json"
+    },
+    {
+      "frame_id": 78,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0078.json"
+    },
+    {
+      "frame_id": 79,
+      "params": {
+        "beta": 0.7,
+        "adoption_pct": 0.8,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0079.json"
+    },
+    {
+      "frame_id": 80,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0080.json"
+    },
+    {
+      "frame_id": 81,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0081.json"
+    },
+    {
+      "frame_id": 82,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.0,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0082.json"
+    },
+    {
+      "frame_id": 83,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.0,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0083.json"
+    },
+    {
+      "frame_id": 84,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0084.json"
+    },
+    {
+      "frame_id": 85,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0085.json"
+    },
+    {
+      "frame_id": 86,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.2,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0086.json"
+    },
+    {
+      "frame_id": 87,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.2,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0087.json"
+    },
+    {
+      "frame_id": 88,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0088.json"
+    },
+    {
+      "frame_id": 89,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0089.json"
+    },
+    {
+      "frame_id": 90,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.4,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0090.json"
+    },
+    {
+      "frame_id": 91,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.4,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0091.json"
+    },
+    {
+      "frame_id": 92,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0092.json"
+    },
+    {
+      "frame_id": 93,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0093.json"
+    },
+    {
+      "frame_id": 94,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.6,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0094.json"
+    },
+    {
+      "frame_id": 95,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.6,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0095.json"
+    },
+    {
+      "frame_id": 96,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.3
+      },
+      "filename": "frame_0096.json"
+    },
+    {
+      "frame_id": 97,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.5
+      },
+      "filename": "frame_0097.json"
+    },
+    {
+      "frame_id": 98,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.8,
+        "shock_intensity": 0.7
+      },
+      "filename": "frame_0098.json"
+    },
+    {
+      "frame_id": 99,
+      "params": {
+        "beta": 0.9,
+        "adoption_pct": 0.8,
+        "shock_intensity": 1.0
+      },
+      "filename": "frame_0099.json"
+    }
+  ]
+}
