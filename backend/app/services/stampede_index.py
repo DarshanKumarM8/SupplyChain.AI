@@ -7,7 +7,11 @@ S_t = 100 × [w1·(1+ρ_Spearman)/2 + w2·v_deplete + w3·σ_rate]
 """
 
 import numpy as np
-from scipy.stats import spearmanr
+try:
+    from scipy.stats import spearmanr
+except ImportError:
+    spearmanr = None
+
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 from shared.constants import INDEX_W1_SPEARMAN, INDEX_W2_DEPLETION, INDEX_W3_VOLATILITY
@@ -51,18 +55,31 @@ def compute_depletion_velocity(capacity_deltas: np.ndarray, capacity_maxes: np.n
 
 def compute_stampede_index(
     spearman_rho: float,
-    depletion_velocity: float,
-    rate_volatility: float,
+    v_deplete: float,
+    sigma_rate: float,
 ) -> float:
     """
-    Compute the SupplyChainAI Index.
-    S_t = 100 × [w1·(1+ρ)/2 + w2·v_deplete + w3·σ_rate]
+    Compute the SupplyChainAI Stampede Index.
 
-    All inputs should be in [0, 1] (except spearman_rho which is [-1, 1]).
+    Formula:
+        S_t = 100 * [w1 * ((1 + spearman_rho) / 2) + w2 * v_deplete + w3 * sigma_rate]
+
+    Static weights:
+        w1 = 0.45  (Spearman rank-correlation herd component)
+        w2 = 0.35  (bottleneck depletion-velocity component)
+        w3 = 0.20  (lane-rate volatility component)
+
+    Args:
+        spearman_rho: Mean pairwise Spearman ρ of firm order vectors, in [-1, 1].
+        v_deplete:    Normalized capacity depletion velocity of bottleneck nodes, in [0, 1].
+        sigma_rate:   Normalized lane-rate volatility, in [0, 1].
+
+    Returns:
+        S_t clamped to [0.0, 100.0].
     """
-    index = 100.0 * (
-        INDEX_W1_SPEARMAN * (1 + spearman_rho) / 2
-        + INDEX_W2_DEPLETION * depletion_velocity
-        + INDEX_W3_VOLATILITY * rate_volatility
+    raw = 100.0 * (
+        0.45 * ((1 + spearman_rho) / 2)
+        + 0.35 * v_deplete
+        + 0.20 * sigma_rate
     )
-    return float(np.clip(index, 0, 100))
+    return min(100.0, max(0.0, raw))

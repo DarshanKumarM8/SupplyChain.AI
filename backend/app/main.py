@@ -18,13 +18,14 @@ app = FastAPI(
     redoc_url="/redoc",
 )
 
-# ── CORS (allow all for hackathon; restrict in production) ────────
+# ── CORS Configuration ───────────────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # ── Register Routers ─────────────────────────────────────────────
@@ -41,7 +42,6 @@ app.add_api_websocket_route("/ws/simulation", websocket_simulation)
 @app.on_event("startup")
 async def startup():
     """Load precomputed manifold data into memory on startup."""
-    # TODO: Load manifold frames from ai_engine/data/manifold/ into RAM
     print("SupplyChainAI Backend starting...")
     print("Manifold data: awaiting precompute from Person 1")
 

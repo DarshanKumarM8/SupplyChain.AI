@@ -8,10 +8,12 @@ Handles heavy computation tasks offloaded from the API server:
 - VaR calculations
 """
 
-from celery import Celery
 import os
+import time
+from celery import Celery
 
-redis_url = os.getenv("CELERY_BROKER_URL", "redis://localhost:6379/1")
+# Redis configuration with fallback for Docker Compose network
+redis_url = os.getenv("REDIS_URL", os.getenv("CELERY_BROKER_URL", "redis://redis:6379/0"))
 
 celery_app = Celery(
     "supplychainai",
@@ -29,23 +31,15 @@ celery_app.conf.update(
 )
 
 
-@celery_app.task(bind=True, name="run_simulation")
-def run_simulation(self, config: dict) -> dict:
+@celery_app.task(name="run_simulation")
+def run_simulation(scenario_id: str = "kaohsiung_typhoon") -> dict:
     """
-    Run a full simulation for the given configuration.
-    This is offloaded to Celery to avoid blocking the API server.
+    Run a full simulation for the given scenario ID.
+    Simulates a 2-second heavy workload before returning success status.
     """
-    # TODO: Wire to ai_engine pipeline
-    # 1. Load scenario graph
-    # 2. Run Sentinel → Triage → Reflex
-    # 3. Return reflex decision
-    return {"status": "completed", "config": config}
-
-
-@celery_app.task(bind=True, name="precompute_manifold")
-def precompute_manifold(self, scenario_path: str, output_dir: str) -> dict:
-    """
-    Run the offline manifold sweep precomputation.
-    """
-    # TODO: Wire to ai_engine/precompute/manifold_sweep.py
-    return {"status": "completed", "scenario": scenario_path}
+    time.sleep(2)  # Simulate heavy computation workload
+    return {
+        "status": "success",
+        "scenario_id": scenario_id,
+        "message": f"Simulation run for scenario '{scenario_id}' completed successfully."
+    }

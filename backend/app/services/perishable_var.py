@@ -57,3 +57,78 @@ def compute_routing_objective(
     """
     expected_carbon = co2e_transit + spoilage_prob * co2e_reproduce * CO2E_REPRODUCE_MULTIPLIER
     return freight_cost + decay_var + expected_carbon
+
+
+# ── Spec-compliant class interface ────────────────────────────────────────────
+
+class PerishableTracker:
+    """
+    Rot-aware routing utilities for perishable cargo.
+
+    Encapsulates Arrhenius kinetic decay and the combined routing-penalty
+    objective function used to choose the least-spoilage route.
+    """
+
+    # Universal gas constant (J / mol·K)
+    _R: float = 8.314
+
+    @staticmethod
+    def calculate_kinetic_decay(
+        temperature: float,
+        activation_energy: float = 80_000,
+        a_factor: float = 1e14,
+    ) -> float:
+        """
+        Compute the Arrhenius kinetic decay rate constant k(T).
+
+        Formula::
+
+            k(T) = A * exp(-Ea / (R * T))
+
+        where R = 8.314 J/(mol·K) is the universal gas constant and T is
+        the absolute temperature in Kelvin (``temperature`` is expected in
+        Kelvin; pass ``celsius + 273.15`` for Celsius inputs).
+
+        Args:
+            temperature:       Absolute temperature in Kelvin (K).
+            activation_energy: Activation energy Ea in J/mol (default 80 000).
+            a_factor:          Pre-exponential frequency factor A (default 1e14).
+
+        Returns:
+            Decay rate constant k  (units: 1/s, same as A's units).
+        """
+        import math
+        return a_factor * math.exp(-activation_energy / (PerishableTracker._R * temperature))
+
+    @staticmethod
+    def compute_routing_penalty(
+        freight_cost: float,
+        decay_var: float,
+        transit_co2: float,
+        spoilage_prob: float,
+        replacement_co2: float,
+    ) -> float:
+        """
+        Combined routing-penalty objective for rot-aware path selection.
+
+        Formula::
+
+            penalty = freight_cost + decay_var + transit_co2
+                      + spoilage_prob * replacement_co2
+
+        Args:
+            freight_cost:     Direct freight cost for the route (USD or index units).
+            decay_var:        α-quantile VaR of Arrhenius decay along the route.
+            transit_co2:      Expected Scope-3 CO₂e for in-transit emissions.
+            spoilage_prob:    Probability of cargo spoilage (0–1).
+            replacement_co2:  CO₂e cost of reproducing / replacing spoiled cargo.
+
+        Returns:
+            Scalar penalty — minimise across candidate routes to pick the
+            least-cost, least-spoilage path.
+        """
+        return freight_cost + decay_var + transit_co2 + spoilage_prob * replacement_co2
+
+
+# ── Module-level singleton ─────────────────────────────────────────────────────
+perishable_tracker = PerishableTracker()

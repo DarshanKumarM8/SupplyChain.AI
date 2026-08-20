@@ -1,1 +1,0 @@
-"""SupplyChainAI — Backend Application"""

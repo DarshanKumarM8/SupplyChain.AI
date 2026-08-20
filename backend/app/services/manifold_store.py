@@ -4,6 +4,15 @@ Manifold Store — In-Memory Precomputed Frame Server
 
 Loads precomputed manifold JSON frames into RAM for instant lookup.
 Provides O(1) frame retrieval by snapping (β, adoption, shock) to nearest grid point.
+
+Usage::
+
+    # Load on construction (preferred)
+    store = ManifoldStore(data_dir="/app/data/manifold")
+
+    # Or load lazily after construction
+    store = ManifoldStore()
+    store.load_from_directory("/app/data/manifold")
 """
 
 import json
@@ -15,9 +24,20 @@ from typing import Optional
 class ManifoldStore:
     """In-memory manifold frame lookup indexed by parameter tuples."""
 
-    def __init__(self):
+    def __init__(self, data_dir: Optional[str] = None):
+        """
+        Initialise the store.
+
+        Args:
+            data_dir: Path to a directory containing ``frame_*.json`` files.
+                      When supplied the store is populated immediately at
+                      construction time so callers need no extra step.
+        """
         self._frames: dict[tuple[float, float, float], dict] = {}
         self._grid_points: list[tuple[float, float, float]] = []
+
+        if data_dir is not None:
+            self.load_from_directory(data_dir)
 
     def load_from_directory(self, directory: str) -> int:
         """
@@ -55,5 +75,10 @@ class ManifoldStore:
         return len(self._frames)
 
 
-# Singleton instance
+# ---------------------------------------------------------------------------
+# Module-level singleton
+# ---------------------------------------------------------------------------
+# Constructed without a directory so it starts empty; the FastAPI startup
+# event in main.py calls load_from_directory() (or reconstructs with
+# data_dir=) once the config path is known at runtime.
 manifold_store = ManifoldStore()

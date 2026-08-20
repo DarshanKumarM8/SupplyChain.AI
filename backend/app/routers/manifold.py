@@ -1,20 +1,27 @@
 """
 Manifold Router
 ================
-GET /api/manifold/frame — Fetch precomputed manifold frame by parameters
+GET /api/manifold/frame — Fetch precomputed manifold frame by parameters.
+
+Delegates to ManifoldStore for O(1) snapped-grid lookup.  Falls back to an
+embedded mock when no precomputed data has been loaded yet (dev/CI mode).
 """
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, HTTPException, Query
+
+from app.services.manifold_store import manifold_store
 
 router = APIRouter()
 
-# ── Mock Manifold Frame ───────────────────────────────────────────
 
-MOCK_MANIFOLD_FRAME = {
+# ── Dev-mode fallback ─────────────────────────────────────────────────────────
+# Used only when the store is empty (no frame_*.json files loaded).
+
+_MOCK_FRAME = {
     "params": {"beta": 0.6, "adoption_pct": 0.40, "shock_intensity": 0.85},
     "frame_id": 142,
     "stampede_index_trajectory": [12, 14, 28, 52, 74, 87, 92, 88, 85, 82, 80, 78],
-    "ai_index_trajectory":      [12, 14, 16, 18, 19, 21, 22, 21, 20, 19, 18, 18],
+    "ai_index_trajectory":       [12, 14, 16, 18, 19, 21, 22, 21, 20, 19, 18, 18],
     "node_states": [
         {"id": "node_kaohsiung_port", "capacity_pct": 0.0,  "is_bottleneck": True,  "lane_price_delta": 0.0},
         {"id": "node_supplier_b",     "capacity_pct": 0.05, "is_bottleneck": True,  "lane_price_delta": 0.34},
@@ -29,29 +36,42 @@ MOCK_MANIFOLD_FRAME = {
     ],
     "meta_herd_detected": False,
     "entropy_budget_active": False,
+    "_source": "mock",
 }
 
 
+# ── Endpoint ──────────────────────────────────────────────────────────────────
+
 @router.get("/manifold/frame")
 async def get_manifold_frame(
-    beta: float = Query(0.6, ge=0.1, le=0.9),
-    adoption: float = Query(0.0, ge=0.0, le=0.8),
-    shock: float = Query(0.85, ge=0.1, le=1.0),
+    beta: float = Query(0.6, ge=0.1, le=0.9,  description="Herd-behaviour coupling constant β"),
+    adoption: float = Query(0.0, ge=0.0, le=0.8, description="AI market adoption fraction (0–0.8)"),
+    shock: float = Query(0.85, ge=0.1, le=1.0, description="Disruption shock intensity (0.1–1.0)"),
 ):
     """
-    Fetch a precomputed manifold frame for the given parameter combination.
-    Snaps to nearest precomputed grid point.
-    """
-    # TODO: Look up from in-memory manifold store
-    frame = {**MOCK_MANIFOLD_FRAME}
-    frame["params"] = {
-        "beta": beta,
-        "adoption_pct": adoption,
-        "shock_intensity": shock,
-    }
+    Return the precomputed manifold frame nearest to the supplied parameters.
 
-    # Meta-herd fires above 60% adoption
-    frame["meta_herd_detected"] = adoption > 0.6
-    frame["entropy_budget_active"] = adoption > 0.6
+    The store snaps *(beta, adoption, shock)* to the closest pre-computed grid
+    point using Euclidean distance.  When no frames have been loaded yet the
+    endpoint returns a built-in mock so the frontend can develop against it
+    immediately.
+    """
+    frame = manifold_store.get_frame(beta, adoption, shock)
+
+    if frame is None:
+        # Store is empty — return mock with live params patched in
+        frame = {
+            **_MOCK_FRAME,
+            "params": {
+                "beta": beta,
+                "adoption_pct": adoption,
+                "shock_intensity": shock,
+            },
+            "meta_herd_detected": adoption > 0.6,
+            "entropy_budget_active": adoption > 0.6,
+        }
+    else:
+        # Real frame: tag it so the client can distinguish sources
+        frame = {**frame, "_source": "precomputed"}
 
     return frame
