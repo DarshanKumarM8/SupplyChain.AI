@@ -8,14 +8,16 @@
 - [/] Create `shared/graph_schema/supply_network.json`
 - [/] Create `shared/constants.py`
 
-### AI Engine (Person 1)
+### AI Engine (Person 1) - FULLY IMPLEMENTED
 - [x] Scaffold `ai_engine/` directory structure
 - [x] Create `Dockerfile`, `requirements.txt`, `pyproject.toml`
-- [x] Stub agent modules (sentinel, triage, reflex)
-- [x] Stub model modules (fokker_planck, graph_mobility, buffer_diversity, meta_herd_detector)
-- [x] Stub crypto module (smpc_scaffold)
-- [x] Stub precompute modules (manifold_sweep, scenario_generator)
-- [x] Create initial Kaohsiung typhoon scenario data
+- [x] Implement agent modules (Sentinel, Triage, Reflex)
+- [x] Implement model modules (Fokker-Planck solver, graph_mobility, buffer_diversity, meta_herd_detector)
+- [x] Implement crypto module (SMPC mock for quiet coalitions)
+- [x] Implement precompute modules (scenario generator, manifold sweep)
+- [x] Generate 100 manifold frames for backend ingestion
+- [x] Write and pass invariant verification tests (22/22)
+- [x] Write formula reference sheet for Q&A defense
 
 ### Backend (Person 2)
 - [x] Scaffold `backend/` directory structure
